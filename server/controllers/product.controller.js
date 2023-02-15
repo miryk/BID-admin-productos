@@ -1,7 +1,5 @@
-import Product from '../models/product.model';
+const Product = require('../models/product.model')
 
-const test = (req, res) => {
+module.exports.test = (req, res) => {
   res.json({ message: "Hello World"})
 }
-
-module.exports = test;
