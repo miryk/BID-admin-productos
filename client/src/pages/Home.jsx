@@ -27,7 +27,9 @@ const Home = () => {
         `${import.meta.env.VITE_REACT_API_URL}/add`,
         values
       );
-      console.log(respuesta);
+
+      
+
       if (respuesta.status == 200) {
         Swal.fire({
           icon: "success",
@@ -35,6 +37,8 @@ const Home = () => {
           text: `Se ha agregado ${respuesta.data.title} perfectamente!`,
         });
         actions.resetForm(initialValues);
+        const updatedList = await axios.get(`${import.meta.env.VITE_REACT_API_URL}`);
+        setProductList(updatedList.data);
       }
     } catch (err) {
       console.log(err);
