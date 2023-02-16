@@ -9,36 +9,34 @@ const ProductForm = () => {
       >
         <form className="container">
           <div className="input-group mb-3" >
-            <span className="input-group-text" id="inputGroup-sizing-default">
+            <span className="input-group-text" id="title">
               Title
             </span>
             <input
               type="text"
               className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default"
+              aria-label="Title input"
+              aria-describedby="Product name input"
             />
           </div>
           <div className="input-group mb-3" >
-            <span className="input-group-text" id="inputGroup-sizing-default">
+            <span className="input-group-text" id="price">
               Price
             </span>
             <input
               type="number"
               className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default"
+              aria-label="Price input"
+              aria-describedby="Product price input"
             />
           </div>
           <div className="input-group mb-3" >
-            <span className="input-group-text" id="inputGroup-sizing-default">
+            <span className="input-group-text" id="description">
               Description
             </span>
-            <input
-              type="text"
+            <textarea
               className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default"
+              aria-label="Description"
             />
           </div>
           <div className="d-flex justify-content-center">
