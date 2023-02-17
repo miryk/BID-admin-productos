@@ -47,9 +47,10 @@ const ProductForm = ({ onSubmit, initialValues, btnText }) => {
             <div>
               <div className="input-group">
                 <span className="input-group-text" id="price">
-                  Price
+                  Price 
                 </span>
                 <Field name="price" className="form-control" placeholder={0} />
+                <span className="input-group-text">$</span>
               </div>
               {touched.price && errors.price ? (
                 <span className="text-danger ms-3">{errors.price}</span>

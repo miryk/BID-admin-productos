@@ -5,21 +5,28 @@ import axios from "axios";
 import ProductList from "../components/ProductList";
 
 const Home = () => {
-  const [productList, setProductList] = useState(null);
+  const [productList, setProductList] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       const list = await axios.get(`${import.meta.env.VITE_REACT_API_URL}`);
-      setProductList(list.data);
+      setProductList([...list.data]);
     };
     getData();
   }, []);
 
   const initialValues = {
     title: "",
-    price: 0,
+    price: 10,
     description: "",
   };
+
+  const updateList = async () => {
+    console.log("updateList")
+    const list = await axios.get(`${import.meta.env.VITE_REACT_API_URL}`);
+    console.log(list.data)
+    setProductList([...list.data]);
+  } 
 
   const addProduct = async (values, actions) => {
     try {
@@ -28,8 +35,6 @@ const Home = () => {
         values
       );
 
-      
-
       if (respuesta.status == 200) {
         Swal.fire({
           icon: "success",
@@ -37,9 +42,11 @@ const Home = () => {
           text: `Se ha agregado ${respuesta.data.title} perfectamente!`,
         });
         actions.resetForm(initialValues);
-        const updatedList = await axios.get(`${import.meta.env.VITE_REACT_API_URL}`);
-        setProductList(updatedList.data);
+        // await updateList();
+        const list = await axios.get(`${import.meta.env.VITE_REACT_API_URL}`);
+        setProductList([...list.data]);
       }
+
     } catch (err) {
       console.log(err);
       Swal.fire({
@@ -54,7 +61,7 @@ const Home = () => {
     <div>
       <h1 className="text-center my-3">Product Manager</h1>
       <ProductForm onSubmit={addProduct} initialValues={initialValues} btnText="Create"/>
-      {productList && <ProductList products={productList} />}
+      <ProductList products={productList} setList={setProductList} />
     </div>
   );
 };
