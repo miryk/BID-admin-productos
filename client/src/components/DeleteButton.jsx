@@ -10,7 +10,11 @@ const DeleteButton = ({id, successCallback, title}) => {
       await axios.delete(`${import.meta.env.VITE_REACT_API_URL}/delete/${prod_id}`);
       successCallback();
     } catch (err) {
-      
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops!!!',
+        text: `Error: ${err?.response?.data?.message || err.message}`,
+    })
     }
   }
 
