@@ -1,6 +1,6 @@
 # BID-admin-productos (MERN)
 
-## Functioning CRUD of product
+## Functioning CRUD for PRODUCT
 
 Home has:
   * Form for new product
